@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="flame" x1="0.4" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#FF9A3C"/>
+      <stop offset="50%" stop-color="#FF6B2B"/>
+      <stop offset="100%" stop-color="#FF4500"/>
+    </linearGradient>
+    <clipPath id="round">
+      <rect width="100" height="100" rx="22" ry="22"/>
+    </clipPath>
+  </defs>
+  <rect width="100" height="100" rx="22" ry="22" fill="#1B7B8A"/>
+  <g clip-path="url(#round)">
+    <path d="M50 15 C50 15, 68 30, 65 48 C63 58, 72 55, 70 45 C78 55, 76 70, 65 78 C58 83, 55 88, 50 90 C45 88, 42 83, 35 78 C24 70, 22 55, 30 45 C28 55, 37 58, 35 48 C32 30, 50 15, 50 15 Z" fill="url(#flame)"/>
+    <path d="M50 35 C50 35, 60 45, 58 57 C56 63, 61 61, 60 54 C64 60, 62 70, 56 75 C53 78, 51 82, 50 83 C49 82, 47 78, 44 75 C38 70, 36 60, 40 54 C39 61, 44 63, 42 57 C40 45, 50 35, 50 35 Z" fill="#FFD580" opacity="0.55"/>
+  </g>
+</svg>
