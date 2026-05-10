@@ -6,3 +6,650 @@
 <title>Reclaim Scale Check-in — She Builds Anyway</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="A 60-second emotional check-in for women 50+ reclaiming themselves. One honest question. One number. One quiet truth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pacific: #3B7A9A;
+    --pacific-dark: #2A5A75;
+    --pacific-deeper: #1F4458;
+    --coral: #E89B8A;
+    --coral-deep: #D17F6E;
+    --cream: #FDFAF3;
+    --blush: #F5C2C0;
+    --plum: #4A3548;
+    --gold: #E0B870;
+    --soft-cream: #FFFEFB;
+    --pacific-light: #B0CCD9;
+    --border: #E0D5C5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', 'Helvetica', 'Arial', sans-serif;
+    color: var(--plum);
+    background: var(--soft-cream);
+    line-height: 1.6;
+    font-size: 16px;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--pacific-deeper) 0%, var(--pacific) 100%);
+    color: var(--cream);
+    padding: 56px 32px 64px 32px;
+    text-align: center;
+  }
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--cream);
+    padding: 7px 20px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-pill .flame {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E0B870'><path d='M12 2c0 4-4 5-4 9a4 4 0 008 0c0-2-1-3-2-4 0 2-1 3-2 3 0-3 2-5 0-8z'/><path d='M9 13a3 3 0 006 0c0-1.5-1-2-2-3 0 1-.5 2-1 2 0-2 1-3 0-4-1 1-3 2-3 5z' fill='%23E89B8A'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .hero h1 {
+    font-family: 'Georgia', serif;
+    font-size: 44px;
+    margin: 0 0 14px 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .hero h1 .accent {
+    color: var(--coral);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.85);
+    max-width: 540px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* CTA BAR (Coral — sets brand tone) */
+  .cta-bar {
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 32px 24px;
+  }
+
+  /* FLOWER DIVIDER */
+  .flower-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 36px 0;
+  }
+  .flower-divider::before,
+  .flower-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 100px;
+    height: 1px;
+    background: var(--coral);
+    opacity: 0.45;
+  }
+  .flower-divider .bloom {
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'><g fill='none' stroke='%23E89B8A' stroke-width='2'><ellipse cx='0' cy='-10' rx='5' ry='9'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(72)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(144)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(216)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(288)'/></g><circle cx='0' cy='0' r='4' fill='none' stroke='%23E0B870' stroke-width='2'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  /* QUESTION CARD */
+  .question-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--coral);
+    border-radius: 0 14px 14px 0;
+    padding: 32px 32px 28px 32px;
+    margin-bottom: 24px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(74,53,72,0.06);
+  }
+  .question-label {
+    font-size: 14px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--coral-deep);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .question-text {
+    font-family: 'Georgia', serif;
+    font-size: 27px;
+    font-weight: 400;
+    color: var(--plum);
+    line-height: 1.4;
+    margin-bottom: 22px;
+    min-height: 78px;
+  }
+  .try-different {
+    font-size: 15px;
+    color: var(--pacific);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+  }
+  .try-different:hover { color: var(--coral-deep); }
+
+  /* SLIDER CARD */
+  .slider-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(74,53,72,0.06);
+  }
+  .slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--plum);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .slider-wrap {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, var(--blush) 0%, var(--coral) 50%, var(--pacific) 100%);
+    border-radius: 3px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    background: white;
+    border: 3px solid var(--coral);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(209,127,110,0.3);
+    transition: transform 0.15s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+  input[type="range"]::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    background: white;
+    border: 3px solid var(--coral);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(209,127,110,0.3);
+  }
+  .scale-numbers {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 0 4px;
+  }
+  .scale-numbers span {
+    font-size: 12px;
+    color: var(--plum);
+    opacity: 0.5;
+    font-weight: 500;
+    width: 20px;
+    text-align: center;
+  }
+
+  /* YOU ARE AT */
+  .you-are-at {
+    background: var(--cream);
+    border: 1px solid var(--coral);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .you-are-at-label {
+    font-size: 11px;
+    color: var(--coral-deep);
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    font-weight: 700;
+  }
+  .you-are-at-value {
+    font-family: 'Georgia', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--coral);
+    line-height: 1;
+  }
+
+  /* GO DEEPER BUTTON */
+  .go-deeper-wrap {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .go-deeper-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(209,127,110,0.25);
+  }
+  .go-deeper-btn:hover {
+    background: var(--coral-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(209,127,110,0.35);
+  }
+  .go-deeper-btn:active { transform: translateY(0); }
+  .go-deeper-btn .arrow { font-size: 16px; }
+
+  /* REFLECTION CARD */
+  .reflection-card {
+    background: linear-gradient(135deg, var(--pacific-deeper) 0%, var(--pacific) 100%);
+    color: var(--cream);
+    border-radius: 14px;
+    padding: 36px 36px 32px 36px;
+    margin-bottom: 28px;
+    position: relative;
+    box-shadow: 0 6px 24px rgba(59,122,154,0.18);
+  }
+  .reflection-card::after {
+    content: '';
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    width: 28px;
+    height: 28px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'><g fill='none' stroke='%23E89B8A' stroke-width='2' opacity='0.5'><ellipse cx='0' cy='-10' rx='5' ry='9'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(72)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(144)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(216)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(288)'/></g><circle cx='0' cy='0' r='4' fill='none' stroke='%23E0B870' stroke-width='2' opacity='0.6'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+  }
+  .reflection-label {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .reflection-title {
+    font-family: 'Georgia', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 14px;
+    padding-right: 40px;
+  }
+  .reflection-body {
+    font-size: 15.5px;
+    color: rgba(253,250,243,0.92);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .prompts-label {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .prompts-list {
+    list-style: none;
+    margin-bottom: 22px;
+  }
+  .prompts-list li {
+    padding: 14px 0;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 16.5px;
+    color: rgba(253,250,243,0.95);
+    line-height: 1.55;
+    border-bottom: 1px solid rgba(253,250,243,0.12);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .prompts-list li:last-child { border-bottom: none; }
+  .prompts-list li::before {
+    content: '—';
+    color: var(--coral);
+    font-style: normal;
+    font-weight: 700;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .reflection-close {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 14.5px;
+    color: rgba(253,250,243,0.75);
+    line-height: 1.6;
+    text-align: center;
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(253,250,243,0.15);
+  }
+
+  /* CTA */
+  .cta-wrap {
+    text-align: center;
+    margin: 24px 0 8px 0;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border: 2px solid var(--pacific);
+    border-radius: 999px;
+    background: white;
+    color: var(--pacific);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+  }
+  .cta-btn:hover {
+    background: var(--pacific);
+    color: white;
+    transform: translateY(-1px);
+  }
+  .cta-btn .flame {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E89B8A'><path d='M12 2c0 4-4 5-4 9a4 4 0 008 0c0-2-1-3-2-4 0 2-1 3-2 3 0-3 2-5 0-8z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: filter 0.2s;
+  }
+  .cta-btn:hover .flame {
+    filter: brightness(0) invert(1);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--pacific-deeper);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 36px 32px;
+    font-size: 13px;
+    margin-top: 48px;
+  }
+  .footer .brand-line {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: var(--coral);
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  .footer a {
+    color: var(--coral);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  .hidden { display: none !important; }
+
+  /* Responsive */
+  @media (max-width: 520px) {
+    .hero { padding: 44px 20px 52px 20px; }
+    .hero h1 { font-size: 34px; }
+    .question-text { font-size: 20px; }
+    .you-are-at-value { font-size: 36px; }
+    .reflection-title { font-size: 22px; padding-right: 32px; }
+    .question-card, .slider-card { padding: 24px 22px; }
+    .reflection-card { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-pill"><span class="flame"></span> Reclaimed Hours · Check-in</div>
+  <h1>How are you <span class="accent">really</span>, FireStarter?</h1>
+  <p class="hero-subtitle">A 60-second check-in. One question. One number. One honest answer — for the woman you've been quietly becoming.</p>
+</div>
+
+<div class="cta-bar">She stopped asking for permission.</div>
+
+<div class="content">
+
+  <div class="question-card">
+    <p class="question-label">Today's Question</p>
+    <p class="question-text" id="questionText"></p>
+    <button class="try-different" onclick="rotateQuestion()">↻ Try a different question</button>
+  </div>
+
+  <div class="slider-card">
+    <div class="slider-labels">
+      <span>Not at all</span>
+      <span>Completely</span>
+    </div>
+    <div class="slider-wrap">
+      <input type="range" min="1" max="10" value="5" id="scoreSlider" oninput="updateScore(this.value)">
+    </div>
+    <div class="scale-numbers">
+      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+    </div>
+    <div class="you-are-at">
+      <span class="you-are-at-label">You are at</span>
+      <span class="you-are-at-value" id="scoreValue">5</span>
+    </div>
+  </div>
+
+  <div class="go-deeper-wrap">
+    <button class="go-deeper-btn" onclick="goDeeper()">
+      Go Deeper <span class="arrow">↓</span>
+    </button>
+  </div>
+
+  <div class="flower-divider"><span class="bloom"></span></div>
+
+  <div class="reflection-card hidden" id="reflectionCard">
+    <p class="reflection-label">Your Reflection</p>
+    <p class="reflection-title" id="reflectionTitle"></p>
+    <p class="reflection-body" id="reflectionBody"></p>
+    <p class="prompts-label">Sit with these for a minute</p>
+    <ul class="prompts-list" id="promptsList"></ul>
+    <p class="reflection-close" id="reflectionClose"></p>
+  </div>
+
+  <div class="cta-wrap hidden" id="ctaWrap">
+    <a href="https://www.skool.com/she-builds-anyway" class="cta-btn">
+      <span class="flame"></span>
+      Join She Builds Anyway — it's free
+    </a>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p class="brand-line">She didn't wait for perfect. She built anyway.</p>
+  <p>For women reclaiming their time. <a href="https://www.skool.com/she-builds-anyway">She Builds Anyway</a> — free to join, always.</p>
+</div>
+
+<script>
+const questions = [
+  "How seen do you feel by your own life right now?",
+  "How present is HER — the woman you used to be — in your day?",
+  "How much of your time feels like yours?",
+  "How allowed do you feel to be on your own list?",
+  "How loud is the whisper today?",
+  "How much guilt comes up when you think about taking time just for you?",
+  "How recognizable is the woman in the mirror?",
+  "How much of you is showing up — vs. the version everyone else needs?"
+];
+
+const reflections = {
+  verylow: {
+    title: "You're allowed to be here.",
+    body: "If your number landed at 1 or 2, please hear this: this isn't a lesson to solve. You're not broken. You're not failing. You're just here, today, at this number. That's allowed. The bravest thing you can do right now is name it without trying to fix it.",
+    prompts: [
+      "What's one tiny thing that still feels like yours?",
+      "When did you last feel even slightly different from this?",
+      "Who or what could you reach toward — without it being a project?"
+    ],
+    close: "You don't have to do anything today. Just being here, naming this, counts."
+  },
+  low: {
+    title: "Naming this is where it starts.",
+    body: "If your number is low, that's not failure — that's recognition. Most women never name where they actually are. You just did. And naming the truth is the first quiet act of reclaiming.",
+    prompts: [
+      "What's one thing you've been waiting for permission to do?",
+      "When did you last feel different about this — a week ago, a year, a decade?",
+      "What's the smallest thing that could shift this even a little?"
+    ],
+    close: "Low numbers aren't a problem to solve. They're a doorway to walk through."
+  },
+  mid: {
+    title: "You're in the middle of something.",
+    body: "A 4 or a 5 isn't bad — it's honest. You're aware. You're showing up partway. That's exactly where reclaiming begins: in the messy middle, where you can see both where you've been and where you're going.",
+    prompts: [
+      "What would move you up one number? Just one.",
+      "What's already working that you might not be noticing?",
+      "Where is the woman you used to be trying to step back in?"
+    ],
+    close: "The middle is where most reclaiming actually happens. Stay with it."
+  },
+  high: {
+    title: "You're stepping back in.",
+    body: "This is what reclaiming looks like — not a 10/10 every day, but 7s and 8s, sustained. You're not chasing a feeling. You're building a life you're allowed to live in.",
+    prompts: [
+      "What changed to get you here?",
+      "Who or what helped — even quietly?",
+      "How do you want to honor this without rushing past it?"
+    ],
+    close: "Days like this aren't accidents. They're proof of work you've been doing."
+  },
+  full: {
+    title: "Today is a day to remember.",
+    body: "10/10 days don't come randomly. They come from quiet, cumulative work — work most people will never see. Take this in. You earned this.",
+    prompts: [
+      "What would the woman you've been quietly becoming want to say about this moment?",
+      "What would you tell yourself a year ago, if she could hear you?",
+      "How can you mark this so future-you remembers?"
+    ],
+    close: "Today is yours. Tomorrow can be too."
+  }
+};
+
+let currentQuestionIndex = 0;
+let currentScore = 5;
+
+function setQuestion(index) {
+  document.getElementById('questionText').textContent = questions[index];
+  currentQuestionIndex = index;
+}
+
+function rotateQuestion() {
+  let nextIndex;
+  do {
+    nextIndex = Math.floor(Math.random() * questions.length);
+  } while (nextIndex === currentQuestionIndex && questions.length > 1);
+  setQuestion(nextIndex);
+  document.getElementById('reflectionCard').classList.add('hidden');
+  document.getElementById('ctaWrap').classList.add('hidden');
+}
+
+function updateScore(val) {
+  currentScore = parseInt(val);
+  document.getElementById('scoreValue').textContent = currentScore;
+  document.getElementById('reflectionCard').classList.add('hidden');
+  document.getElementById('ctaWrap').classList.add('hidden');
+}
+
+function goDeeper() {
+  let tier;
+  if (currentScore <= 2) tier = 'verylow';
+  else if (currentScore <= 4) tier = 'low';
+  else if (currentScore <= 6) tier = 'mid';
+  else if (currentScore <= 9) tier = 'high';
+  else tier = 'full';
+
+  const r = reflections[tier];
+  document.getElementById('reflectionTitle').textContent = r.title;
+  document.getElementById('reflectionBody').textContent = r.body;
+  document.getElementById('reflectionClose').textContent = r.close;
+  document.getElementById('promptsList').innerHTML = r.prompts.map(p => '<li>' + p + '</li>').join('');
+
+  document.getElementById('reflectionCard').classList.remove('hidden');
+  document.getElementById('ctaWrap').classList.remove('hidden');
+
+  setTimeout(function() {
+    document.getElementById('reflectionCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+setQuestion(Math.floor(Math.random() * questions.length));
+</script>
+</body>
+</html>
