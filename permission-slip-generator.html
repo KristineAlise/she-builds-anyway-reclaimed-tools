@@ -6,3 +6,696 @@
 <title>Permission Slip Generator — She Builds Anyway</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="Type one thing you're saying no to. Get back a beautifully designed, screenshot-able permission slip — official, signed, and ready for the fridge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pacific: #3B7A9A;
+    --pacific-dark: #2A5A75;
+    --pacific-deeper: #1F4458;
+    --coral: #E89B8A;
+    --coral-deep: #D17F6E;
+    --cream: #FDFAF3;
+    --blush: #F5C2C0;
+    --plum: #4A3548;
+    --gold: #E0B870;
+    --soft-cream: #FFFEFB;
+    --pacific-light: #B0CCD9;
+    --border: #E0D5C5;
+    --slip-paper: #FBF4E4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', 'Helvetica', 'Arial', sans-serif;
+    color: var(--plum);
+    background: var(--soft-cream);
+    line-height: 1.6;
+    font-size: 16px;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--pacific-deeper) 0%, var(--pacific) 100%);
+    color: var(--cream);
+    padding: 56px 32px 64px 32px;
+    text-align: center;
+  }
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--cream);
+    padding: 7px 20px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-pill .flame {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E0B870'><path d='M12 2c0 4-4 5-4 9a4 4 0 008 0c0-2-1-3-2-4 0 2-1 3-2 3 0-3 2-5 0-8z'/><path d='M9 13a3 3 0 006 0c0-1.5-1-2-2-3 0 1-.5 2-1 2 0-2 1-3 0-4-1 1-3 2-3 5z' fill='%23E89B8A'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .hero h1 {
+    font-family: 'Georgia', serif;
+    font-size: 44px;
+    margin: 0 0 14px 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .hero h1 .accent {
+    color: var(--coral);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.85);
+    max-width: 540px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* CTA BAR */
+  .cta-bar {
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 48px 24px 32px 24px;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--coral);
+    border-radius: 0 14px 14px 0;
+    padding: 32px 32px 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(74,53,72,0.06);
+  }
+  .form-label {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--coral-deep);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .form-title {
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    color: var(--plum);
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+  .form-intro {
+    font-size: 14.5px;
+    color: var(--plum);
+    opacity: 0.78;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+  .field-wrap { margin-bottom: 18px; }
+  .field-label {
+    font-size: 13px;
+    color: var(--plum);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+  }
+  .field-label .req { color: var(--coral); }
+  .field-label .opt { color: var(--plum); opacity: 0.55; font-weight: 400; font-style: italic; font-size: 12px; }
+
+  .text-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--cream);
+    color: var(--plum);
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .text-input:focus {
+    outline: none;
+    border-color: var(--coral);
+    background: white;
+  }
+  .text-input::placeholder {
+    color: var(--plum);
+    opacity: 0.4;
+  }
+
+  /* QUICK SUGGESTIONS */
+  .suggestions {
+    margin-top: 12px;
+  }
+  .suggestions-label {
+    font-size: 11px;
+    color: var(--plum);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .suggestion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .chip {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--plum);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .chip:hover {
+    background: var(--coral);
+    color: white;
+    border-color: var(--coral);
+  }
+
+  /* GENERATE BUTTON */
+  .generate-wrap { text-align: center; margin-top: 8px; }
+  .generate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(209,127,110,0.25);
+  }
+  .generate-btn:hover {
+    background: var(--coral-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(209,127,110,0.35);
+  }
+  .generate-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* FLOWER DIVIDER */
+  .flower-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 36px 0;
+  }
+  .flower-divider::before,
+  .flower-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 100px;
+    height: 1px;
+    background: var(--coral);
+    opacity: 0.45;
+  }
+  .flower-divider .bloom {
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'><g fill='none' stroke='%23E89B8A' stroke-width='2'><ellipse cx='0' cy='-10' rx='5' ry='9'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(72)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(144)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(216)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(288)'/></g><circle cx='0' cy='0' r='4' fill='none' stroke='%23E0B870' stroke-width='2'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  /* PERMISSION SLIP */
+  .slip-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .permission-slip {
+    background: var(--slip-paper);
+    border: 6px double var(--pacific);
+    border-radius: 6px;
+    padding: 44px 40px 36px 40px;
+    max-width: 580px;
+    width: 100%;
+    position: relative;
+    box-shadow:
+      0 4px 18px rgba(74,53,72,0.12),
+      inset 0 0 0 1px rgba(232,155,138,0.18);
+    text-align: center;
+  }
+  /* Corner flowers */
+  .slip-corner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'><g fill='none' stroke='%23E89B8A' stroke-width='2'><ellipse cx='0' cy='-10' rx='5' ry='9'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(72)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(144)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(216)'/><ellipse cx='0' cy='-10' rx='5' ry='9' transform='rotate(288)'/></g><circle cx='0' cy='0' r='4' fill='none' stroke='%23E0B870' stroke-width='2'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .slip-corner.tl { top: 14px; left: 14px; }
+  .slip-corner.tr { top: 14px; right: 14px; }
+  .slip-corner.bl { bottom: 14px; left: 14px; }
+  .slip-corner.br { bottom: 14px; right: 14px; }
+
+  .slip-header {
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .slip-title {
+    font-family: 'Georgia', serif;
+    font-size: 36px;
+    color: var(--pacific);
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .slip-date {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--plum);
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+  .slip-rule {
+    width: 60%;
+    height: 1px;
+    background: var(--coral);
+    opacity: 0.4;
+    margin: 0 auto 24px auto;
+  }
+  .slip-issued {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    color: var(--plum);
+    margin-bottom: 24px;
+  }
+  .slip-issued strong {
+    font-weight: 700;
+    color: var(--pacific);
+    font-size: 19px;
+  }
+  .slip-permission-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--coral-deep);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .slip-the-no {
+    font-family: 'Georgia', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--plum);
+    line-height: 1.4;
+    margin-bottom: 8px;
+    padding: 0 12px;
+  }
+  .slip-the-no::before { content: '\201C'; color: var(--coral); margin-right: 4px; }
+  .slip-the-no::after { content: '\201D'; color: var(--coral); margin-left: 4px; }
+  .slip-context {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--plum);
+    opacity: 0.7;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .slip-body {
+    font-family: 'Georgia', serif;
+    font-size: 15.5px;
+    color: var(--plum);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding: 0 8px;
+  }
+  .slip-body p { margin-bottom: 14px; }
+  .slip-body p:last-child { margin-bottom: 0; }
+  .slip-body strong {
+    color: var(--coral-deep);
+    font-weight: 700;
+  }
+  .slip-anchor-line {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--coral-deep);
+    line-height: 1.4;
+    margin: 18px auto 0 auto;
+    max-width: 440px;
+  }
+  .slip-signature-row {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(232,155,138,0.4);
+  }
+  .slip-signature-name {
+    font-family: 'Caveat', 'Georgia', cursive;
+    font-size: 28px;
+    color: var(--pacific);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .slip-signature-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--plum);
+    opacity: 0.6;
+    font-weight: 600;
+  }
+
+  /* ACTIONS ROW */
+  .actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin: 8px 0 16px 0;
+  }
+  .actions-hint {
+    font-size: 13px;
+    color: var(--plum);
+    opacity: 0.7;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    background: white;
+    border: 2px solid var(--pacific);
+    color: var(--pacific);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .secondary-btn:hover {
+    background: var(--pacific);
+    color: white;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border: 2px solid var(--coral);
+    border-radius: 999px;
+    background: var(--coral);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+  }
+  .cta-btn:hover {
+    background: var(--coral-deep);
+    border-color: var(--coral-deep);
+    transform: translateY(-1px);
+  }
+  .cta-btn .flame {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M12 2c0 4-4 5-4 9a4 4 0 008 0c0-2-1-3-2-4 0 2-1 3-2 3 0-3 2-5 0-8z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--pacific-deeper);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 36px 32px;
+    font-size: 13px;
+    margin-top: 48px;
+  }
+  .footer .brand-line {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: var(--coral);
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  .footer a {
+    color: var(--coral);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  .hidden { display: none !important; }
+
+  /* Print styles — hide everything except slip */
+  @media print {
+    body { background: white; }
+    .hero, .cta-bar, .form-card, .flower-divider, .actions-row, .footer { display: none !important; }
+    .content { padding: 0; max-width: 100%; }
+    .permission-slip {
+      box-shadow: none;
+      max-width: 100%;
+      page-break-inside: avoid;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 44px 20px 52px 20px; }
+    .hero h1 { font-size: 34px; }
+    .form-card { padding: 24px 22px; }
+    .permission-slip { padding: 36px 24px 30px 24px; }
+    .slip-title { font-size: 30px; }
+    .slip-issued { font-size: 16px; }
+    .slip-issued strong { font-size: 17px; }
+    .slip-permission-label { font-size: 13px; }
+    .slip-the-no { font-size: 17px; }
+    .slip-anchor-line { font-size: 19px; }
+    .slip-corner { width: 24px; height: 24px; }
+    .slip-corner.tl, .slip-corner.tr { top: 10px; }
+    .slip-corner.tl, .slip-corner.bl { left: 10px; }
+    .slip-corner.tr, .slip-corner.br { right: 10px; }
+    .slip-corner.bl, .slip-corner.br { bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-pill"><span class="flame"></span> Reclaimed Hours · Permission Slip</div>
+  <h1>Make your <span class="accent">no</span> official.</h1>
+  <p class="hero-subtitle">Type one thing you're saying no to this week. Get back a beautifully designed, screenshot-able permission slip — for the fridge, your phone, or yourself.</p>
+</div>
+
+<div class="cta-bar">She stopped asking for permission.</div>
+
+<div class="content">
+
+  <!-- FORM -->
+  <div id="formScreen">
+    <div class="form-card">
+      <p class="form-label">Step One — Type Your No</p>
+      <h2 class="form-title">What are you saying no to this week?</h2>
+      <p class="form-intro">Be specific. The smaller the better. Not the big confrontation — just the one thing that drains you that you usually say yes to.</p>
+
+      <div class="field-wrap">
+        <label class="field-label" for="theNo">What I'm saying no to <span class="req">*</span></label>
+        <input type="text" class="text-input" id="theNo" placeholder="e.g., the 9pm text, the favor that's not really mine, the meeting my gut already regrets" oninput="checkForm()">
+        <div class="suggestions">
+          <p class="suggestions-label">Need a starting point? Tap one</p>
+          <div class="suggestion-chips" id="chipsRow"></div>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <label class="field-label" for="theName">Your name <span class="opt">(optional — we'll just say "FireStarter" if you skip)</span></label>
+        <input type="text" class="text-input" id="theName" placeholder="e.g., Sarah">
+      </div>
+
+      <div class="generate-wrap">
+        <button class="generate-btn" id="generateBtn" disabled onclick="generateSlip()">
+          Make It Official →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="resultScreen" class="hidden">
+
+    <div class="flower-divider"><span class="bloom"></span></div>
+
+    <div class="slip-wrap">
+      <div class="permission-slip" id="slipPaper">
+        <span class="slip-corner tl"></span>
+        <span class="slip-corner tr"></span>
+        <span class="slip-corner bl"></span>
+        <span class="slip-corner br"></span>
+
+        <p class="slip-header">She Builds Anyway</p>
+        <h2 class="slip-title">Permission Slip</h2>
+        <p class="slip-date" id="slipDate"></p>
+
+        <div class="slip-rule"></div>
+
+        <p class="slip-issued">Issued to <strong id="slipName"></strong></p>
+
+        <p class="slip-permission-label">Permission granted to say no to</p>
+        <p class="slip-the-no" id="slipNo"></p>
+
+        <div class="slip-body">
+          <p>This is not selfish.<br>It is the first quiet promise<br>to the woman you shelved.</p>
+          <p>She has been waiting.<br><strong>This is proof.</strong></p>
+        </div>
+
+        <p class="slip-anchor-line">Every small no is a yes to HER.</p>
+
+        <div class="slip-signature-row">
+          <p class="slip-signature-name" id="slipSig"></p>
+          <p class="slip-signature-label">— signed, by you, for you —</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions-row">
+      <p class="actions-hint">📸 Take a screenshot to save · 🖨️ Or print it for the fridge</p>
+      <button class="secondary-btn" onclick="printSlip()">🖨️ Print / Save as PDF</button>
+      <button class="secondary-btn" onclick="editSlip()">↻ Edit or generate another</button>
+      <a href="https://www.skool.com/she-builds-anyway" class="cta-btn">
+        <span class="flame"></span>
+        Join She Builds Anyway — it's free
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  <p class="brand-line">She didn't wait for perfect. She built anyway.</p>
+  <p>For women reclaiming their time. <a href="https://www.skool.com/she-builds-anyway">She Builds Anyway</a> — free to join, always.</p>
+</div>
+
+<script>
+const SUGGESTIONS = [
+  "the 9pm text",
+  "the favor that's not really mine",
+  "the errand I didn't volunteer for",
+  "the holiday I always end up running",
+  "the 'real quick' that turns into 4 hours",
+  "the call from someone who only calls when they need something"
+];
+
+// Render suggestion chips
+const chipsRow = document.getElementById('chipsRow');
+SUGGESTIONS.forEach(function(s) {
+  const chip = document.createElement('button');
+  chip.className = 'chip';
+  chip.type = 'button';
+  chip.textContent = s;
+  chip.onclick = function() {
+    document.getElementById('theNo').value = s;
+    checkForm();
+  };
+  chipsRow.appendChild(chip);
+});
+
+function checkForm() {
+  const theNo = document.getElementById('theNo').value.trim();
+  document.getElementById('generateBtn').disabled = theNo.length === 0;
+}
+
+function formatDate() {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const d = new Date();
+  return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+function generateSlip() {
+  const theNo = document.getElementById('theNo').value.trim();
+  if (!theNo) return;
+
+  const theName = document.getElementById('theName').value.trim() || 'FireStarter';
+
+  document.getElementById('slipDate').textContent = formatDate();
+  document.getElementById('slipName').textContent = theName;
+  document.getElementById('slipNo').textContent = theNo;
+  document.getElementById('slipSig').textContent = theName;
+
+  document.getElementById('formScreen').classList.add('hidden');
+  document.getElementById('resultScreen').classList.remove('hidden');
+
+  setTimeout(function() {
+    document.getElementById('slipPaper').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 50);
+}
+
+function editSlip() {
+  document.getElementById('resultScreen').classList.add('hidden');
+  document.getElementById('formScreen').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function printSlip() {
+  window.print();
+}
+</script>
+</body>
+</html>
